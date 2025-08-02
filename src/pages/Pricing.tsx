@@ -111,7 +111,7 @@ const Pricing = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-candy-peach-50 via-candy-mint-50 to-candy-sky-50">
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
@@ -129,37 +129,37 @@ const Pricing = () => {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-12 text-center">
         <div className="max-w-4xl mx-auto">
-          <Badge variant="secondary" className="mb-4 bg-purple-100 text-purple-800">
+          <Badge variant="secondary" className="mb-4 bg-gradient-to-r from-pink-100 to-purple-100 text-purple-800 border-pink-200">
             <Sparkles className="w-3 h-3 mr-1" />
             Psychology-Powered Insights
           </Badge>
           
           <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-pink-300 via-purple-300 to-blue-300 bg-clip-text text-transparent">
               Unlock Your Love Story
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-pink-400 mb-8 max-w-3xl mx-auto leading-relaxed">
             Stop repeating the same dating mistakes. Discover your patterns, understand your attractions, 
-            and find who you're <strong className="text-purple-500">actually</strong> meant for.
+            and find who you're <strong className="text-purple-400">actually</strong> meant for.
           </p>
 
           {/* Billing Toggle */}
           <div className="flex items-center justify-center gap-4 mb-12">
-            <span className={`text-lg font-medium ${!isAnnual ? 'text-purple-600' : 'text-gray-500'}`}>
+            <span className={`text-lg font-medium ${!isAnnual ? 'text-purple-500' : 'text-candy-cocoa-500'}`}>
               Monthly
             </span>
             <Switch
               checked={isAnnual}
               onCheckedChange={setIsAnnual}
-              className="data-[state=checked]:bg-purple-500"
+              className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-pink-500 data-[state=checked]:to-purple-500"
             />
-            <span className={`text-lg font-medium ${isAnnual ? 'text-purple-600' : 'text-gray-500'}`}>
+            <span className={`text-lg font-medium ${isAnnual ? 'text-purple-500' : 'text-candy-cocoa-500'}`}>
               Annual
             </span>
             {isAnnual && (
-              <Badge variant="secondary" className="bg-green-100 text-green-800 animate-pulse">
+              <Badge variant="secondary" className="bg-gradient-to-r from-green-100 to-green-200 text-green-800 animate-pulse border-green-300">
                 Save up to 25%
               </Badge>
             )}
@@ -188,15 +188,15 @@ const Pricing = () => {
               
               <CardHeader className="text-center pb-4">
                 <div className="text-6xl mb-4 animate-bounce">{plan.emoji}</div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">{plan.name}</h3>
-                <p className="text-lg font-semibold text-purple-600 mb-2">{plan.subtitle}</p>
-                <p className="text-sm text-gray-600 mb-4">{plan.description}</p>
+                <h3 className="text-2xl font-bold text-candy-cocoa-800 mb-2">{plan.name}</h3>
+                <p className="text-lg font-semibold text-purple-500 mb-2">{plan.subtitle}</p>
+                <p className="text-sm text-candy-cocoa-600 mb-4">{plan.description}</p>
                 
                 <div className="mb-4">
-                  <div className="text-4xl font-black text-gray-800">
+                  <div className="text-4xl font-black text-candy-cocoa-800">
                     {getPrice(plan)}
                     {plan.price.monthly > 0 && (
-                      <span className="text-lg font-normal text-gray-500">
+                      <span className="text-lg font-normal text-candy-cocoa-500">
                         /{isAnnual ? 'year' : 'month'}
                       </span>
                     )}
@@ -232,10 +232,10 @@ const Pricing = () => {
                           )}
                         </div>
                         <IconComponent className={`w-4 h-4 ${
-                          feature.included ? 'text-purple-500' : 'text-gray-400'
+                          feature.included ? 'text-purple-500' : 'text-candy-cocoa-400'
                         }`} />
                         <span className={`text-sm ${
-                          feature.included ? 'text-gray-700' : 'text-gray-400'
+                          feature.included ? 'text-candy-cocoa-700' : 'text-candy-cocoa-400'
                         }`}>
                           {feature.text}
                         </span>
@@ -254,16 +254,16 @@ const Pricing = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div className="text-center">
-              <div className="text-3xl font-black text-purple-600 mb-2">94%</div>
-              <p className="text-gray-600">Better understand their patterns</p>
+              <div className="text-3xl font-black text-purple-500 mb-2">94%</div>
+              <p className="text-candy-cocoa-600">Better understand their patterns</p>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-black text-pink-600 mb-2">87%</div>
-              <p className="text-gray-600">Make healthier dating choices</p>
+              <div className="text-3xl font-black text-pink-500 mb-2">87%</div>
+              <p className="text-candy-cocoa-600">Make healthier dating choices</p>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-black text-red-600 mb-2">76%</div>
-              <p className="text-gray-600">Find more compatible matches</p>
+              <div className="text-3xl font-black text-purple-600 mb-2">76%</div>
+              <p className="text-candy-cocoa-600">Find more compatible matches</p>
             </div>
           </div>
         </div>
@@ -272,24 +272,24 @@ const Pricing = () => {
       {/* FAQ Teaser */}
       <section className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto">
-          <Card className="bg-gradient-to-r from-purple-100 to-pink-100 border-0 shadow-xl">
+          <Card className="bg-gradient-to-r from-candy-peach-50 to-candy-mint-50 border-pink-200 shadow-xl">
             <CardContent className="p-8 text-center">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              <h2 className="text-2xl font-bold text-candy-cocoa-800 mb-4">
                 Still Wondering If This Is Right for You?
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-candy-cocoa-600 mb-6">
                 Start with our free quiz to see how accurate our psychology-based insights really are. 
                 No commitment, just pure self-discovery.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/quiz">
-                  <Button size="lg" className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8">
+                  <Button size="lg" className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white px-8 shadow-lg">
                     <Heart className="w-4 h-4 mr-2" />
                     Try Free Quiz
                   </Button>
                 </Link>
                 <Link to="/about">
-                  <Button variant="outline" size="lg" className="px-8">
+                  <Button variant="outline" size="lg" className="px-8 border-pink-300 text-candy-cocoa-700 hover:bg-pink-50">
                     Learn More
                   </Button>
                 </Link>
@@ -301,14 +301,14 @@ const Pricing = () => {
 
       {/* Trust Footer */}
       <footer className="container mx-auto px-4 py-8 text-center">
-        <div className="flex items-center justify-center gap-2 text-sm text-gray-500 mb-4">
+        <div className="flex items-center justify-center gap-2 text-sm text-candy-cocoa-500 mb-4">
           <Shield className="w-4 h-4" />
           <span>Powered by real psychology + AI. No random results.</span>
         </div>
-        <div className="flex items-center justify-center gap-6 text-xs text-gray-400">
-          <Link to="/privacy" className="hover:text-gray-600">Privacy Policy</Link>
-          <Link to="/terms" className="hover:text-gray-600">Terms of Service</Link>
-          <Link to="/about" className="hover:text-gray-600">About</Link>
+        <div className="flex items-center justify-center gap-6 text-xs text-candy-cocoa-400">
+          <Link to="/privacy" className="hover:text-candy-cocoa-600 transition-colors">Privacy Policy</Link>
+          <Link to="/terms" className="hover:text-candy-cocoa-600 transition-colors">Terms of Service</Link>
+          <Link to="/about" className="hover:text-candy-cocoa-600 transition-colors">About</Link>
         </div>
       </footer>
     </div>

@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 import NewBrandLogo from "@/components/NewBrandLogo";
 import { SupabaseService } from "@/lib/supabaseService";
 import { useAuth } from "@/contexts/AuthContext";
-import SupabaseConnectionTest from "@/components/SupabaseConnectionTest";
+
 import { 
   Heart, 
   Brain, 
@@ -766,10 +766,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Debug Connection Test - Remove in production */}
-      <section className="relative z-10 container mx-auto px-4 py-8">
-        <SupabaseConnectionTest />
-      </section>
+
 
       {/* Final CTA */}
       <section className="relative z-10 container mx-auto px-4 py-16">
