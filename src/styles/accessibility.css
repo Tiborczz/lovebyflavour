@@ -1,0 +1,170 @@
+/* Accessibility Styles */
+
+/* High Contrast Mode */
+.high-contrast {
+  --candy-cocoa-800: #000000;
+  --candy-cocoa-700: #1a1a1a;
+  --candy-cocoa-600: #333333;
+  --candy-cocoa-500: #4a4a4a;
+  --candy-cocoa-400: #666666;
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --accent-primary: #0000ff;
+  --accent-secondary: #ff0000;
+}
+
+.high-contrast * {
+  color: var(--text-primary) !important;
+  background-color: var(--bg-primary) !important;
+  border-color: var(--text-primary) !important;
+}
+
+.high-contrast button {
+  border: 2px solid var(--text-primary) !important;
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.high-contrast button:hover {
+  background-color: var(--text-primary) !important;
+  color: var(--bg-primary) !important;
+}
+
+/* Reduced Motion */
+.reduced-motion *,
+.reduced-motion *::before,
+.reduced-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Font Size Scaling */
+[data-font-size="small"] {
+  font-size: 0.875rem;
+}
+
+[data-font-size="medium"] {
+  font-size: 1rem;
+}
+
+[data-font-size="large"] {
+  font-size: 1.125rem;
+}
+
+[data-font-size="large"] h1 { font-size: 3rem; }
+[data-font-size="large"] h2 { font-size: 2.5rem; }
+[data-font-size="large"] h3 { font-size: 2rem; }
+[data-font-size="large"] h4 { font-size: 1.5rem; }
+
+/* Keyboard Navigation */
+.keyboard-navigation *:focus {
+  outline: 3px solid #8B5CF6 !important;
+  outline-offset: 2px !important;
+  border-radius: 4px;
+}
+
+.keyboard-navigation button:focus,
+.keyboard-navigation a:focus,
+.keyboard-navigation input:focus,
+.keyboard-navigation textarea:focus,
+.keyboard-navigation select:focus {
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5) !important;
+}
+
+/* Screen Reader Optimizations */
+.screen-reader-optimized {
+  --animation-duration: 0s;
+}
+
+.screen-reader-optimized .sr-only {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+}
+
+/* Skip Links */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #8B5CF6;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  z-index: 9999;
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Focus Indicators */
+.keyboard-navigation .focus-visible:focus {
+  outline: 2px solid #8B5CF6;
+  outline-offset: 2px;
+}
+
+/* Ensure sufficient color contrast */
+.high-contrast .text-pink-400,
+.high-contrast .text-purple-400,
+.high-contrast .text-mint-400 {
+  color: var(--text-primary) !important;
+  font-weight: bold;
+}
+
+/* High contrast gradients */
+.high-contrast .bg-gradient-to-r,
+.high-contrast .bg-gradient-to-br,
+.high-contrast .text-transparent {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* Ensure buttons are keyboard accessible */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #8B5CF6;
+  outline-offset: 2px;
+}
+
+/* Loading states accessibility */
+[aria-busy="true"] {
+  cursor: wait;
+}
+
+/* Announce live regions for screen readers */
+.live-region {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Ensure proper heading hierarchy */
+.screen-reader-optimized h1:empty::before,
+.screen-reader-optimized h2:empty::before,
+.screen-reader-optimized h3:empty::before,
+.screen-reader-optimized h4:empty::before,
+.screen-reader-optimized h5:empty::before,
+.screen-reader-optimized h6:empty::before {
+  content: "Heading";
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute;
+}

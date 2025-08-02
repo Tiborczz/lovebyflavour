@@ -12,6 +12,8 @@ import { useState, useEffect } from "react";
 import NewBrandLogo from "@/components/NewBrandLogo";
 import { SupabaseService } from "@/lib/supabaseService";
 import { useAuth } from "@/contexts/AuthContext";
+import EnhancedAIEngine from "@/components/EnhancedAIEngine";
+import GamificationSystem from "@/components/GamificationSystem";
 
 import { 
   Heart, 
@@ -325,6 +327,16 @@ const Index = () => {
               <Link to="/pricing" className="text-candy-cocoa-700 hover:text-candy-cocoa-900 transition-colors">
                 Pricing
               </Link>
+              {user && (
+                <>
+                  <Link to="/dashboard" className="text-candy-cocoa-700 hover:text-candy-cocoa-900 transition-colors">
+                    Dashboard
+                  </Link>
+                  <Link to="/enhanced-profile" className="text-candy-cocoa-700 hover:text-candy-cocoa-900 transition-colors">
+                    Profile
+                  </Link>
+                </>
+              )}
             </div>
 
             {/* Auth Buttons */}
@@ -637,132 +649,124 @@ const Index = () => {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 {user ? (
-                  <Link to="/quiz">
-                    <Button size="lg" className="bg-gradient-to-r from-candy-peach-500 to-candy-mint-500 hover:from-candy-peach-600 hover:to-candy-mint-600 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                      <Heart className="w-5 h-5 mr-2" />
-                      Take the Quiz
-                      <ArrowRight className="w-5 h-5 ml-2" />
-                    </Button>
-                  </Link>
+                  <>
+                    <Link to="/quiz">
+                      <Button size="lg" className="bg-gradient-to-r from-candy-peach-500 to-candy-mint-500 hover:from-candy-peach-600 hover:to-candy-mint-600 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                        <Heart className="w-5 h-5 mr-2" />
+                        Take the Quiz
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                      </Button>
+                    </Link>
+                    <Link to="/dashboard">
+                      <Button variant="outline" size="lg" className="px-8 py-3 text-lg border-purple-300 text-purple-600 hover:bg-purple-50">
+                        View Dashboard
+                      </Button>
+                    </Link>
+                  </>
                 ) : (
-                  <Button 
-                    size="lg" 
-                    onClick={() => openAuth('signup')}
-                    className="bg-gradient-to-r from-candy-peach-500 to-candy-mint-500 hover:from-candy-peach-600 hover:to-candy-mint-600 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    <Heart className="w-5 h-5 mr-2" />
-                    Take the Quiz
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
+                  <>
+                    <Link to="/onboarding">
+                      <Button 
+                        size="lg" 
+                        className="bg-gradient-to-r from-candy-peach-500 to-candy-mint-500 hover:from-candy-peach-600 hover:to-candy-mint-600 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                      >
+                        <Heart className="w-5 h-5 mr-2" />
+                        Get Started
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                      </Button>
+                    </Link>
+                    <Link to="/about">
+                      <Button variant="outline" size="lg" className="px-8 py-3 text-lg border-purple-300 text-purple-600 hover:bg-purple-50">
+                        Learn More
+                      </Button>
+                    </Link>
+                  </>
                 )}
-                
-                <Link to="/about">
-                  <Button variant="outline" size="lg" className="px-8 py-3 text-lg">
-                    Learn More
-                  </Button>
-                </Link>
               </div>
             </CardContent>
           </Card>
         </div>
       </section>
 
-      {/* AI Compatibility Engine Teaser */}
-      <section className="relative z-10 container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-gradient-to-r from-purple-100 to-blue-100 border-0 shadow-xl">
-            <CardContent className="p-12">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="bg-white rounded-full p-3 shadow-lg">
-                      <Zap className="w-6 h-6 text-purple-600" />
-                    </div>
-                    <Badge variant="secondary" className="bg-purple-200 text-purple-800">
-                      AI-Powered
-                    </Badge>
-                  </div>
-                  
-                  <h2 className="text-3xl font-bold text-gray-800 mb-4">
-                    AI Compatibility Engine
-                  </h2>
-                  
-                  <p className="text-gray-600 mb-6">
-                    Analyze your ex-partners' traits and discover your dating patterns. Our AI helps you understand why you're attracted to certain types and what you actually need for lasting love.
-                  </p>
-                  
-                                     <div className="flex flex-col sm:flex-row gap-3">
-                     <Link to="/ex-analysis">
-                       <Button className="bg-purple-600 hover:bg-purple-700 text-white">
-                         <Brain className="w-4 h-4 mr-2" />
-                         AI Analysis
-                       </Button>
-                     </Link>
-                     <Link to="/match-predictor">
-                       <Button variant="outline" className="border-purple-300 text-purple-700 hover:bg-purple-50">
-                         <Heart className="w-4 h-4 mr-2" />
-                         Match Predictor
-                       </Button>
-                     </Link>
-                   </div>
-                </div>
-                
-                <div className="text-center">
-                  <div className="bg-white rounded-2xl p-8 shadow-lg">
-                    <div className="grid grid-cols-3 gap-4 mb-4">
-                      <div className="text-2xl">🍓</div>
-                      <div className="text-2xl">🍫</div>
-                      <div className="text-2xl">🍋</div>
-                    </div>
-                    <div className="text-sm text-gray-600 mb-2">Your Pattern:</div>
-                    <div className="text-lg font-semibold text-gray-800">
-                      "You're drawn to intense, dramatic types"
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      {/* Enhanced AI Compatibility Engine */}
+      <EnhancedAIEngine 
+        quizProgress={user ? 100 : 0} 
+        userFlavour={user ? "Pineapple - Wild & Adventurous" : null}
+      />
+
+      {/* Gamification Showcase for Logged in Users */}
+      {user && (
+        <section className="relative z-10 container mx-auto px-4 py-16">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+                Your Love Journey
+              </span>
+            </h2>
+            <p className="text-xl text-pink-400 max-w-3xl mx-auto leading-relaxed">
+              Track your progress, earn achievements, and level up your <strong className="text-purple-400">dating game</strong>!
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <GamificationSystem 
+              discoveryPoints={1247}
+              userLevel={3}
+              profileCompletion={85}
+            />
+          </div>
+        </section>
+      )}
 
       {/* Blog Highlights */}
       <section className="relative z-10 container mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-candy-cocoa-800 mb-4">
-            Psychology Insights
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-mint-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">
+              Latest Insights
+            </span>
           </h2>
-          <p className="text-lg text-candy-cocoa-600">
-            Dive deeper into the science of attraction and relationships
+          <p className="text-xl text-pink-400 max-w-3xl mx-auto leading-relaxed">
+            Discover the psychology behind dating and learn how to build <strong className="text-purple-400">better relationships</strong>.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {blogHighlights.map((post, index) => (
-            <Card key={index} className="group hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm border-0">
+            <Card key={index} className="border border-mint-200/50 bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all group cursor-pointer">
               <CardContent className="p-6">
                 <div className="flex items-center gap-2 mb-3">
-                  <Badge variant="outline" className="text-xs">
+                  <Badge variant="outline" className="text-xs border-mint-300 text-mint-700">
                     {post.category}
                   </Badge>
-                  <span className="text-xs text-gray-500">{post.readTime}</span>
+                  <span className="text-xs text-candy-cocoa-500">{post.readTime}</span>
                 </div>
                 
-                <h3 className="font-bold text-gray-800 mb-2 group-hover:text-candy-peach-600 transition-colors">
+                <h3 className="text-xl font-bold text-candy-cocoa-800 mb-3 group-hover:text-mint-600 transition-colors">
                   {post.title}
                 </h3>
                 
-                <p className="text-gray-600 text-sm mb-4">
-                  {post.excerpt}
-                </p>
+                <p className="text-candy-cocoa-600 mb-4">{post.excerpt}</p>
                 
-                <Link to="/blog" className="text-candy-peach-600 hover:text-candy-peach-700 text-sm font-medium flex items-center gap-1">
-                  Read More
-                  <ArrowRight className="w-3 h-3" />
-                </Link>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center text-sm text-candy-cocoa-500">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    {post.date}
+                  </div>
+                  <Link to="/blog" className="text-mint-600 hover:text-mint-700 text-sm font-medium flex items-center gap-1">
+                    Read More
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                </div>
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Button asChild variant="outline" size="lg" className="border-mint-300 text-candy-cocoa-700 hover:bg-mint-50">
+            <Link to="/blog">Read More Articles</Link>
+          </Button>
         </div>
       </section>
 

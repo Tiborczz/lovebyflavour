@@ -27,17 +27,30 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Navigation from "./components/Navigation";
 import UserProfile from "./components/UserProfile";
 
+// Enhanced Pages
+import EnhancedProfilePage from "./pages/EnhancedProfilePage";
+import EnhancedDashboardPage from "./pages/EnhancedDashboardPage";
+import OnboardingPage from "./pages/OnboardingPage";
+import AccessibilityProvider from "./components/AccessibilityProvider";
+
+// Import accessibility styles
+import "./styles/accessibility.css";
+
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <AuthProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Navigation />
-          <Routes>
+        <AccessibilityProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            {/* Skip to main content link for accessibility */}
+            <a href="#main-content" className="skip-link">Skip to main content</a>
+            <Navigation />
+            <main id="main-content">
+              <Routes>
             {/* Public routes */}
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
@@ -103,14 +116,29 @@ const App = () => (
               </ProtectedRoute>
             } />
             
+            {/* Enhanced Feature Routes */}
+            <Route path="/enhanced-profile" element={
+              <ProtectedRoute>
+                <EnhancedProfilePage />
+              </ProtectedRoute>
+            } />
+            <Route path="/dashboard" element={
+              <ProtectedRoute>
+                <EnhancedDashboardPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/onboarding" element={<OnboardingPage />} />
+            
             {/* Development/testing routes */}
             <Route path="/test" element={<TestPage />} />
             <Route path="/supabase-test" element={<SupabaseTest />} />
             
             {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+              </Routes>
+            </main>
+          </BrowserRouter>
+        </AccessibilityProvider>
       </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
