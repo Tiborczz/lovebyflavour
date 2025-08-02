@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "server": "node server/index.js",
     "dev:full": "concurrently \"npm run dev\" \"npm run server\"",
-    "push": "git add . && git commit -m \"Auto-update: $(date)\" && git push origin main",
+    "push": "git add . && git diff --cached --quiet || (git commit -m \"Auto-update: %date% %time%\" && git push origin main)",
     "watch:push": "node auto-watcher.js"
   },
   "dependencies": {

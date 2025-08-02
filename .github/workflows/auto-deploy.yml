@@ -1,4 +1,5 @@
-name: Auto Deploy to Vercel
+# Simple Build Verification
+name: Build Check
 
 on:
   push:
@@ -7,7 +8,7 @@ on:
     branches: [ main ]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     
     steps:
@@ -26,10 +27,5 @@ jobs:
     - name: Build project
       run: npm run build
       
-    - name: Deploy to Vercel
-      uses: vercel/action@v1
-      with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-org-id: ${{ secrets.ORG_ID }}
-        vercel-project-id: ${{ secrets.PROJECT_ID }}
-        vercel-args: '--prod'
+    - name: Build Success
+      run: echo "✅ Build completed successfully! Vercel will auto-deploy."

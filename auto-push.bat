@@ -1,5 +1,5 @@
 @echo off
-echo Auto-pushing changes to git...
+echo 🔄 Auto-pushing changes to git...
 
 REM Add all changes
 git add .
@@ -7,20 +7,25 @@ git add .
 REM Check if there are any changes to commit
 git diff --cached --quiet
 if %errorlevel% neq 0 (
-    REM Commit with timestamp
-    for /f "tokens=2 delims==" %%a in ('wmic OS Get localdatetime /value') do set "dt=%%a"
-    set "YY=%dt:~2,2%" & set "YYYY=%dt:~0,4%" & set "MM=%dt:~4,2%" & set "DD=%dt:~6,2%"
-    set "HH=%dt:~8,2%" & set "Min=%dt:~10,2%" & set "Sec=%dt:~12,2%"
-    set "datestamp=%YYYY%-%MM%-%DD% %HH%:%Min%:%Sec%"
+    REM Get current timestamp
+    for /f "tokens=1-4 delims=/ " %%i in ('date /t') do set mydate=%%i-%%j-%%k
+    for /f "tokens=1-2 delims=:" %%i in ('time /t') do set mytime=%%i:%%j
     
-    git commit -m "Auto-update: %datestamp%"
+    git commit -m "Auto-update: %mydate% %mytime%"
     
     REM Push to main branch
     git push origin main
-    
-    echo ✅ Changes pushed successfully!
+    if %errorlevel% equ 0 (
+        echo ✅ Changes pushed successfully!
+        echo 🚀 Vercel will auto-deploy your changes!
+    ) else (
+        echo ❌ Push failed! Check your internet connection.
+    )
 ) else (
-    echo ℹ️  No changes to commit.
+    echo ℹ️  No changes to commit. Working tree is clean.
+    echo 💡 This means all your changes are already saved in git!
 )
 
-pause
+echo.
+echo Press any key to continue...
+pause >nul
