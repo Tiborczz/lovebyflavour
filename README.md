@@ -249,3 +249,5 @@ For support, email support@lovebyflavour.com or join our Discord community.
 ---
 
 *Built with ❤️ for better relationships through AI-powered insights*
+#   R e a d y   f o r   d e p l o y m e n t  
+ 
